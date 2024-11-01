@@ -1,0 +1,28 @@
+{
+  "name": "api-netlix",
+  "version": "1.0.0",
+  "description": "api for netflix clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest --forceExit",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "api",
+    "netlix"
+  ],
+  "author": "Adib Muhammad Maros",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.40.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jest": "^29.7.0",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
+  }
+}

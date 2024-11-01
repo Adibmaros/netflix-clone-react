@@ -1,0 +1,152 @@
+openapi: 3.1.0
+info:
+  title: Netflix Clone
+  description: API Netflix Clone MongoDB database
+paths:
+  /my-movies/{email}/{token}:
+    get:
+      summary: Get favorite Movies User
+      parameters:
+        - in: path
+          name: email
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: token
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success getting favorite movies
+        401:
+          description: Failed getting favorite movies, unauthorized
+  /my-movies:
+    post:
+      summary: Add favorite movies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: adibmaros@gmail.com
+                token:
+                  type: string
+                  example: token123
+                data:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: Iron Man 2
+                    description:
+                      type: string
+                      example: The story of the character Iron Man begins in 2008 when Tony
+      responses:
+        201:
+          description: Favorite movie added successfully
+        500:
+          description: Error adding favorite movie...
+    delete:
+      summary: Delete favorite Movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                email:
+                  type: string
+                  example: adibmaros@gmail.com
+                token:
+                  type: string
+                  example: token123
+      responses:
+        204:
+          description: Favorite movie removed successfully
+        500:
+          description: Failed removing favorite movie
+  /sign-up:
+    post:
+      summary: sign up new user with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  required: true
+                  example: testing11@gmail.com
+                password:
+                  type: string
+                  required: true
+                  example: testing11
+      responses:
+        200:
+          description: Sign-up success
+        500:
+          description: Sign-up failed
+  /my-token:
+    post:
+      summary: Sign In and Make new token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  required: true
+                  example: adibmaros12@gmail.com
+                token:
+                  type: string
+                  required: true
+                  example: token123
+                password:
+                  type: string
+                  required: true
+                  example: Adib212z
+      responses:
+        200:
+          description: Token signed in successfully
+        500:
+          description: sign-in error
+    delete:
+      summary: sign out user and delete token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  required: true
+                  example: adibmaros12@gmail.com
+                token:
+                  type: string
+                  required: true
+                  example: token123
+      responses:
+        200:
+          description: Token signed out successfully
+        400:
+          description: sign-out failed
